@@ -99,10 +99,6 @@ class Level:
         
         if style == 'flame':
             pass
-        
-        print(style)
-        print(strength)
-        print(cost)
     
     def destroy_attack(self):
         if self.current_attack:
