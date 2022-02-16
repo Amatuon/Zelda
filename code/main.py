@@ -15,6 +15,11 @@ class Game:
         self.clock = pygame.time.Clock()
         
         self.level = Level()
+        
+        # sound
+        main_sound = pygame.mixer.Sound('audio/main.ogg')
+        main_sound.set_volume(0.2)
+        main_sound.play(loops= -1)
 
     def run(self):
         while True:
@@ -22,8 +27,11 @@ class Game:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-
-            self.screen.fill('black')
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_m:
+                        self.level.toggle_menu()
+                        
+            self.screen.fill(WATER_COLOR)
             self.level.run()
             pygame.display.update()
             self.clock.tick(FPS)
